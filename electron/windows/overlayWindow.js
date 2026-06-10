@@ -3,18 +3,19 @@ import { join } from 'path'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-
-
-export function createOverlayWindow(){
-    const overlay = new BrowserWindow({
+export function createOverlayWindow(mainWindow) {
+  const overlay = new BrowserWindow({
     width: 600,
     height: 400,
     frame: false,
-    transparent: false,
+    transparent: true,  // ← Window itself is transparent
     alwaysOnTop: true,
     skipTaskbar: true,
     focusable: false,
+    thickFrame: false,
     show: false,
+    parent: mainWindow,
+    backgroundColor: '#00000000',  // ← Fully transparent
     webPreferences: {
       preload: join(import.meta.dirname, '../preload.js'),
       contextIsolation: true,
@@ -25,19 +26,14 @@ export function createOverlayWindow(){
 
   if (isDev) {
     overlay.loadURL('http://localhost:5173/overlay.html')
+    overlay.webContents.openDevTools({ mode: 'detach' })
   } else {
     overlay.loadFile(join(import.meta.dirname, '../../dist/overlay.html'))
   }
 
+  overlay.on('blur', () => {
+    overlay.webContents.send('overlay:visibility', false)
+  })
+
   return overlay
-}
-
-
-
-
-
-export function repositionOverlay(overlayWindow) {
-    if (overlayWindow.isVisible()) {
-        overlayWindow.hide()
-    }
 }
