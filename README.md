@@ -1,3 +1,4 @@
+```
 kitty-ide/
 ├── electron/
 │   ├── main.js
@@ -42,3 +43,4 @@ kitty-ide/
 ├── package.json
 ├── package-lock.json
 └── .gitignore
+```
