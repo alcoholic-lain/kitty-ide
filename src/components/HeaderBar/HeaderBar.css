@@ -1,0 +1,156 @@
+.header-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-mantle);
+  user-select: none;
+  border-bottom: 1px solid var(--color-border);
+}
+.header-bar__row {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  width: 100%;
+}
+/*
+position: relative  — needed so the drag zone can be positioned absolutely inside it
+display: flex       — lines up the left, center, right zones horizontally
+height: 40px        — same as VS Code's titlebar
+user-select: none   — prevents text selection when dragging
+#181825             — slightly darker than the main background so the header is visually distinct
+*/
+
+.header-bar__drag {
+    position:absolute;
+    top:0;
+    left:0;
+    width : 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+}
+/*
+position: absolute          — stretches it across the entire header behind everything else
+width/height: 100%          — need width: 100% — because position: absolute takes it out of the normal flow, so it no longer automatically fills its paren
+-webkit-app-region: drag    — this is the Electron magic, makes the whole header draggable
+*/
+
+
+
+
+.header-bar__right{
+    display :flex;
+    align-items: center;
+    margin-left:auto;
+    -webkit-app-region: no-drag;
+    z-index: 1;
+}
+/*
+margin-left: auto               — pushes the right zone all the way to the right edge
+-webkit-app-region: no-drag     — cancels dragging so buttons are clickable
+z-index: 1                      — sits above the drag zone so clicks reach the buttons
+*/
+
+
+
+
+
+
+
+
+.window-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: var(--header-height);
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size:16px;
+    cursor:pointer;
+    transition: background-color 0.1s ease;
+
+}
+
+
+/*
+width: 46px, height: 40px                   — same proportions as VS Code's window buttons
+border: none, background: transparent       — removes default button styling
+transition                                  — smooth color change on hover
+*/
+
+
+
+.window-btn.minimize:hover {
+  background-color: var(--color-surface);
+}
+
+.window-btn.maximize:hover {
+  background-color: var(--color-surface);
+}
+
+.window-btn.close:hover {
+  background-color: var(--color-red);
+  color: var(--color-base);
+}
+
+/*
+minimize and maximize get a subtle dark highlight on hover
+close gets red — universal convention, users expect it
+close also flips the text color to dark so the × stays readable against the red background
+*/
+
+.header-bar__logo {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin-right: 5px;
+  z-index: 1;
+  -webkit-app-region: no-drag;
+}
+
+
+.header-bar__logo img {
+  width: var(--logo-dim);
+  height: var(--logo-dim);
+  object-fit: contain;
+}
+
+.header-bar__left {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  -webkit-app-region: no-drag;
+}
+
+.header-bar__center {
+  display: flex;
+  flex:1;
+  align-items: center;
+  z-index: 1;
+  -webkit-app-region: drag;
+}
+
+
+/*
+Notice header-bar__center keeps 
+-webkit-app-region: drag — it's the empty middle space so dragging from there should still move the window.
+*/
+
+
+
+
+.header-bar__util {
+  background: var(--util-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 2;
+  -webkit-app-region: no-drag;
+}
+
+.header-bar__util > * {
+  pointer-events: all; /* but actual children are still clickable */
+}

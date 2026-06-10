@@ -1,0 +1,31 @@
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  height: var(--bottom-height);
+  background-color: var(--color-mantle);
+  color: var(--color-text);
+  font-size: 12px;
+  user-select: none;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+}
+
+.bottom-bar__left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+
+.bottom-bar__center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.bottom-bar__right {
+  display: flex;
+  align-items: center;
+  flex:1;
+}

@@ -1,0 +1,31 @@
+:root {
+  /* Base colors */
+  --color-base:     #1e1e2e;
+  --color-mantle:   #181825;
+  --color-crust:    #11111b;
+  --color-surface:  #313244;
+
+  /* Text */
+  --color-text:     #cdd6f4;
+  --color-subtext:  #a6adc8;
+
+  /* Accent */
+  --color-red:      #f38ba8;
+  --color-blue:     #89b4fa;
+  --color-green:    #a6e3a1;
+  --color-yellow:   #f9e2af;
+  --color-mauve:    #cba6f7;
+
+  /* UI */
+  --header-height:  40px;
+  --sidebar-width:  48px;
+  --bottom-height:  24px;
+  --logo-dim:       35px;
+
+  /* Layout */
+  --color-border: #211b25;
+
+  /*div visual identifiers*/
+  --util-bg: linear-gradient(to right, #1e1e2e, #2d1f3d, #1e1e2e);
+
+}
