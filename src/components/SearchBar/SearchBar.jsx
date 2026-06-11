@@ -1,42 +1,43 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import './SearchBar.css'
 
 function SearchBar() {
     const inputRef = useRef(null)
     const [query, setQuery] = useState('')
 
-    function sendBounds() {
-        const bounds = inputRef.current.getBoundingClientRect()
-        window.electron.showOverlay({
-            x: bounds.x,
-            y: bounds.y,
-            width: bounds.width,
-            height: bounds.height,
-        })
-    }
-
     function handleFocus() {
-        sendBounds()
+        if (query.trim()) {
+            window.electron.sendQuery(query)
+            const bounds = inputRef.current.getBoundingClientRect()
+            window.electron.showSearchResults({
+                x: bounds.left,
+                y: bounds.top,
+                width: bounds.width,
+                height: bounds.height
+            })
+        }
     }
 
     function handleBlur() {
-        setTimeout(() => window.electron.hideOverlay(), 150)
+        setTimeout(() => window.electron.hideSearchResults(), 150)
     }
 
     function handleChange(e) {
         const value = e.target.value
         setQuery(value)
         window.electron.sendQuery(value)
-        if (value.trim()) sendBounds()
-        else window.electron.hideOverlay()
+        if (value.trim()) {
+            const bounds = inputRef.current.getBoundingClientRect()
+            window.electron.showSearchResults({
+                x: bounds.left,
+                y: bounds.top,
+                width: bounds.width,
+                height: bounds.height
+            })
+        } else {
+            window.electron.hideSearchResults()
+        }
     }
-
-    // Update input when suggestion is selected
-    useEffect(() => {
-        window.electron.onSuggestionSelected((suggestion) => {
-            setQuery(suggestion)
-        })
-    }, [])
 
     return (
         <div className="search-bar">

@@ -2,12 +2,18 @@
   display: flex;
   flex: 1;
   overflow: hidden;
+  background-color: transparent;
 }
 
 .main-layout__editor {
   flex: 1;
   overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.webview-container {
+  flex: 1;
+  background-color: transparent;
 }

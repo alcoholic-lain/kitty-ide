@@ -1,10 +1,13 @@
+```
 kitty-ide/
 ├── electron/
 │   ├── main.js
 │   ├── preload.js
+│   ├── ipcChannels.js           (NEW)
+│   ├── tabManager.js             (NEW)
 │   └── windows/
-│       ├── mainWindow.js
-│       └── overlayWindow.js
+│       ├── mainWindow.js         (MODIFIED - BaseWindow replacement)
+│       └── overlayWindow.js      (DELETE)
 ├── src/
 │   ├── components/
 │   │   ├── HeaderBar/
@@ -16,29 +19,28 @@ kitty-ide/
 │   │   ├── Sidebar/
 │   │   │   ├── Sidebar.jsx
 │   │   │   └── Sidebar.css
-│   │   └── SearchBar/
-│   │       ├── SearchBar.jsx
-│   │       ├── SearchBar.css
-│   │       ├── SearchResults.jsx
-│   │       └── SearchResults.css
+│   │   ├── SearchBar/
+│   │   │   ├── SearchBar.jsx      (MODIFIED - DOM results)
+│   │   │   ├── SearchBar.css
+│   │   │   ├── SearchResults.jsx  (MODIFIED - DOM dropdown)
+│   │   │   └── SearchResults.css  (MODIFIED)
+│   │   └── TabBar/                (NEW)
+│   │       ├── TabBar.jsx
+│   │       └── TabBar.css
 │   ├── layouts/
 │   │   └── MainLayout/
-│   │       ├── MainLayout.jsx
-│   │       └── MainLayout.css
+│   │       ├── MainLayout.jsx     (MODIFIED - add TabBar)
+│   │       └── MainLayout.css     (MODIFIED)
 │   ├── styles/
 │   │   └── theme.css
 │   ├── App.jsx
 │   ├── App.css
 │   ├── main.jsx
-│   ├── overlay.jsx
 │   ├── index.css
-│   └── assets/
-│       └── (empty)
-├── public/
-│   └── kitty.png
+│   └── overlay.jsx                (DELETE)
 ├── index.html
-├── overlay.html
-├── vite.config.js
+├── overlay.html                   (DELETE)
+├── vite.config.js                 (MODIFIED - remove overlay)
 ├── package.json
-├── package-lock.json
-└── .gitignore
+└── package-lock.json
+```

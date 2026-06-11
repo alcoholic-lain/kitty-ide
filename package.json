@@ -2,7 +2,7 @@
   "name": "kitty-ide",
   "private": true,
   "version": "0.0.0",
-  "main": "electron/main.js",
+  "main": "electron/main.cjs",
   "type": "module",
   "scripts": {
     "dev": "concurrently --kill-others \"vite\" \"wait-on http://localhost:5173 && NODE_ENV=development electron .\"",

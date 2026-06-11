@@ -5,11 +5,17 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   base: './',
+  server: {
+    // Ensure search.html is served correctly
+    fs: {
+      strict: false
+    }
+  },
   build: {
     rollupOptions: {
       input: {
-        main: resolve(import.meta.dirname, 'index.html'),
-        overlay: resolve(import.meta.dirname, 'overlay.html'),
+        main: resolve(__dirname, 'index.html'),
+        search: resolve(__dirname, 'search.html'),
       }
     }
   }

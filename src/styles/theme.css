@@ -1,9 +1,14 @@
+html, body, #root {
+  background-color: transparent !important;
+}
+
 :root {
   /* Base colors */
   --color-base:     #1e1e2e;
   --color-mantle:   #181825;
   --color-crust:    #11111b;
   --color-surface:  #313244;
+  --color-transparent: #00000000;
 
   /* Text */
   --color-text:     #cdd6f4;
@@ -27,5 +32,4 @@
 
   /*div visual identifiers*/
   --util-bg: linear-gradient(to right, #1e1e2e, #2d1f3d, #1e1e2e);
-
 }

@@ -4,13 +4,68 @@
   box-sizing: border-box;
 }
 
-.app {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-base);
-  color: var(--color-text);
-  font-family: sans-serif;
-  overflow: hidden;
-  display:flex;
-  flex-direction: column;
+html, body, #root {
+  background-color: transparent !important;
+  width: 100%;
+  height: 100%;
 }
+
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: transparent !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Header bar - clickable */
+.header-bar {
+  background-color: #181825 !important;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
+/* Sidebar - clickable */
+.sidebar {
+  background-color: #181825 !important;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
+/* Bottom bar - clickable */
+.bottom-bar {
+  background-color: #181825 !important;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
+/* Editor area - let clicks pass through to web view */
+.main-layout {
+  background-color: transparent !important;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  pointer-events: none !important;
+}
+
+.main-layout__editor {
+  background-color: transparent !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none !important;
+}
+
+.webview-container {
+  background-color: transparent !important;
+  flex: 1;
+  position: relative;
+  pointer-events: none !important;
+}
+
+/* But the web view itself will receive clicks */
